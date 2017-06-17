@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using DocumentFormat.OpenXml.Packaging;
 using System.Text.RegularExpressions;
 namespace DocumentFormat.OpenXml.Spreadsheet
 {
-    public class Spreadsheet  
+    public class Spreadsheet : IEnumerable<SheetCell>
     {
         public readonly SheetData SheetData;
         public readonly Worksheet Worksheet;
@@ -130,6 +131,19 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         internal void Save()
         {
             Worksheet.Save();
+        }
+
+        public IEnumerator<SheetCell> GetEnumerator()
+        {
+            return SheetData.Elements<Row>()
+                .SelectMany(r => r.Elements<Cell>())
+                .Select(c => new SheetCell(c))
+                .GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
