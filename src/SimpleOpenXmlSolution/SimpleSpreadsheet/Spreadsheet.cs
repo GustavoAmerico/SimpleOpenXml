@@ -1,27 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DocumentFormat.OpenXml.Packaging;
-
+using System.Text.RegularExpressions;
 namespace DocumentFormat.OpenXml.Spreadsheet
 {
-    public class Spreadsheet
+    public class Spreadsheet  
     {
-        private readonly SheetData _sheetData;
-        private readonly Worksheet _worksheet;
-        private readonly WorksheetPart _worksheetPart;
+        public readonly SheetData SheetData;
+        public readonly Worksheet Worksheet;
 
         public Spreadsheet(WorksheetPart worksheetPart)
         {
-            _worksheetPart = worksheetPart;
-            _worksheet = _worksheetPart.Worksheet;
-            _sheetData = _worksheet.GetFirstChild<SheetData>();
+            Worksheet = worksheetPart.Worksheet;
+            SheetData = Worksheet.GetFirstChild<SheetData>();
+            //create a MergeCells class to hold each MergeCell
+            MergeCells mergeCells = new MergeCells();
+            Worksheet.InsertAfter(mergeCells, SheetData);
         }
 
-        // Given a column name, a row index, and a WorksheetPart, inserts a cell into the _worksheet.
-        // If the cell already exists, returns it.
+        ///<summary>Given a column name, a row index, and a WorksheetPart, inserts a cell into the _worksheet. 
+        /// If the cell already exists, returns it.</summary>
+        /// <exception cref="ArgumentException">Occore quando columnNotanion não corresponde ^([a-zA-Z]+[0-9]+)$</exception>
         public SheetCell AddCell(string columnName, uint rowIndex)
         {
+            if (!Regex.IsMatch(columnName, "^[a-zA-Z]+$"))
+                throw new ArgumentException($"The value not is an valid cell notation {columnName}", nameof(columnName));
             var row = CreateRowIfNotExists(rowIndex);
             var cellReference = columnName.ToUpper() + rowIndex;
             var cell = CreateCellIfNotExistis(row, cellReference);
@@ -36,6 +41,32 @@ namespace DocumentFormat.OpenXml.Spreadsheet
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="columnNotation"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">Occore quando columnNotanion não corresponde ^([a-zA-Z]+[0-9]+)$</exception>
+        public SheetCell AddCell(string columnNotation)
+        {
+            if (Regex.IsMatch(columnNotation ?? "", "^([a-zA-Z]+[0-9]+)$"))
+            {
+                var row = Regex.Replace(columnNotation, "[^0-9]", "");
+                var cell = Regex.Replace(columnNotation, "[^a-zA-Z]", "");
+                return AddCell(cell, uint.Parse(row));
+            }
+            throw new ArgumentException($"The value not is an valid cell notation {columnNotation}", nameof(columnNotation));
+        }
+
+        public SheetCell MergeCell(string columnNotationA, string columnNotationB)
+        {
+            var cellA = AddCell(columnNotationA);
+            var cellB = AddCell(columnNotationB);
+            var mergeCells = Worksheet.GetFirstChild<MergeCells>();
+            var cell = new MergeCell() { Reference = $"{columnNotationA}:{columnNotationB}" };
+            mergeCells.Append(cell);
+            return cellA;
+        }
 
         private Cell CreateCellIfNotExistis(Row row, string columnReference)
         {
@@ -61,14 +92,13 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         private Row CreateRowIfNotExists(uint rowIndex)
         {
             // If the _worksheet does not contain a row with the specified row index, insert one.
-            var row = _sheetData.Elements<Row>().FirstOrDefault(r => r.RowIndex == rowIndex);
+            var row = SheetData.Elements<Row>().FirstOrDefault(r => r.RowIndex == rowIndex);
             if (row != null) return row;
             row = new Row { RowIndex = rowIndex, };
-            _sheetData.AppendChild(row);
+            SheetData.AppendChild(row);
             //_sheetData.InsertAfterSelf(row);
             return row;
         }
-
 
         public static string GetCode(byte number)
         {
@@ -97,10 +127,9 @@ namespace DocumentFormat.OpenXml.Spreadsheet
 
         }
 
-
         internal void Save()
         {
-            _worksheet.Save();
+            Worksheet.Save();
         }
     }
 }
