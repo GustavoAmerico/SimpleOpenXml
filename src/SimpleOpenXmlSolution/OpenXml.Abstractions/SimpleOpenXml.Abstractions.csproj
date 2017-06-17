@@ -4,6 +4,17 @@
     <TargetFramework>netstandard1.4</TargetFramework>
     <RootNamespace>DocumentFormat.OpenXml</RootNamespace>
     <AssemblyName>SimpleOpenXml.Abstractions</AssemblyName>
+    <Authors>Gustavo Américo</Authors>
+    <Company>GAG LTDA</Company>
+    <Description>Esse projeto tem o objetivo de simplificar e abstrair a utilização do DocumentFormat.OpenXML</Description>
+    <PackageProjectUrl>https://github.com/GustavoAmerico/SimpleOpenXml</PackageProjectUrl>
+    <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/LibreOffice_4.0_Calc_Icon.svg/256px-LibreOffice_4.0_Calc_Icon.svg.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/GustavoAmerico/SimpleOpenXml</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard1.4\SimpleOpenXml.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
