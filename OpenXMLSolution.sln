@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentFormat.OpenXml.SimpleSpreadsheet", "OpenXML\DocumentFormat.OpenXml.SimpleSpreadsheet.csproj", "{3085A0C7-7CDA-4F2F-AB9D-8C3E92414B1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2D0CE34A-8557-4286-A38C-C05A6D9B1A52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXML.UnitTests", "Tests\OpenXML.UnitTests\OpenXML.UnitTests.csproj", "{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3085A0C7-7CDA-4F2F-AB9D-8C3E92414B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3085A0C7-7CDA-4F2F-AB9D-8C3E92414B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3085A0C7-7CDA-4F2F-AB9D-8C3E92414B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3085A0C7-7CDA-4F2F-AB9D-8C3E92414B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47DE66C7-BF67-4504-AD8B-FD8E3CEF670F} = {2D0CE34A-8557-4286-A38C-C05A6D9B1A52}
+	EndGlobalSection
+EndGlobal
