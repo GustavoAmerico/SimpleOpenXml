@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Tests", "02.Tests", "{2D0CE34A-8557-4286-A38C-C05A6D9B1A52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleSpreadsheet.UnitTests", "Tests\SimpleSpreadsheet.UnitTests\SimpleSpreadsheet.UnitTests.csproj", "{691DE4F2-83AB-44E6-ABA5-91D1EE09C845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOpenXml.SimpleSpreadsheet.UnitTests", "Tests\SimpleSpreadsheet.UnitTests\SimpleOpenXml.SimpleSpreadsheet.UnitTests.csproj", "{691DE4F2-83AB-44E6-ABA5-91D1EE09C845}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Projects", "01.Projects", "{4FCC1412-95EC-4A1B-8380-2B25053A80DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleSpreadsheet", "SimpleSpreadsheet\SimpleSpreadsheet.csproj", "{E966BF05-DDBA-415F-8DC6-2D272BB87AF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOpenXml.SimpleSpreadsheet", "SimpleSpreadsheet\SimpleOpenXml.SimpleSpreadsheet.csproj", "{E966BF05-DDBA-415F-8DC6-2D272BB87AF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6670892-D901-4A10-A39A-EA027D5D8652}"
 	ProjectSection(SolutionItems) = preProject

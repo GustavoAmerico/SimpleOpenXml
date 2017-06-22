@@ -9,7 +9,7 @@
     <ApplicationIcon />
     <OutputTypeEx>library</OutputTypeEx>
     <StartupObject />
-    <AssemblyName>DocumentFormat.OpenXml.SimpleSpreadsheet</AssemblyName>
+    <AssemblyName>SimpleOpenXml.SimpleSpreadsheet</AssemblyName>
     <RootNamespace>DocumentFormat.OpenXml.Spreadsheet</RootNamespace>
   </PropertyGroup>
 

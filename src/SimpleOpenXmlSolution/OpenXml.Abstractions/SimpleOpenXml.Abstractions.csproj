@@ -11,6 +11,7 @@
     <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/LibreOffice_4.0_Calc_Icon.svg/256px-LibreOffice_4.0_Calc_Icon.svg.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/GustavoAmerico/SimpleOpenXml</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
+    <PackageTags>Office, Excel, Word</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
